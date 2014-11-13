@@ -11,48 +11,74 @@ object RubyScience extends PApplet {
     frame.getContentPane().add(mySketch)
     mySketch.init
 
-    frame.setSize(520, 520)
+    frame.setSize(540, 540)
     frame.setVisible(true)
   }
 }
 
 class RubyScience extends PApplet {
-  val dotSpacing = 25
-  val padding = 10
+  val dotSpacing = 50
+  val padding = 20
   val w = 500
   val numDotsRow = w / dotSpacing
-  var points = IndexedSeq[Array[Float]]()
-  var myDelaunay: Option[Delaunay] = None
 
   override def setup() = {
     size(w + padding*2, w + padding*2)
     background(200)
-    smooth()
     frameRate(1)
   }
 
-  override def draw() ={
-    points = (0 to numDotsRow).map { i =>
-      Array[Float](random(padding, w), random(padding, w))
-    }
-    myDelaunay = Some(new Delaunay(points.toArray))
+  override def draw() {
+    val points = generatePoints
+    val gemPoints = generateGemPoints
+    val allPointsDelaunay = new Delaunay((points ++ gemPoints).toArray)
+    val gemDelaunay = new Delaunay(gemPoints.toArray)
+
+    val allEdges = allPointsDelaunay.getEdges
+    val gemEdges = gemDelaunay.getEdges
+
+    val gem = new Hull(gemPoints.toArray)
 
     background(200)
     stroke(255)
-    strokeWeight(3)
-    val edges = myDelaunay.get.getEdges
-    val hull = new Hull(points.toArray)
 
-    fill(255, 0, 0)
-    hull.getRegion().draw(this)
+    fill(128, 15, 15)
+    gem.getRegion().draw(this)
 
+    drawEdges(allEdges, 1)
+    drawEdges(gemEdges, 2)
+  }
+
+  def generatePoints() = {
+    val range = 5
+    (1 to numDotsRow).flatMap { i =>
+      val yVal = i * dotSpacing
+      (1 to numDotsRow).map { j =>
+        val xVal = j * dotSpacing + pointOffset(i)
+        Array[Float](random(xVal-range, xVal+range), random(yVal-range, yVal+range))
+      }
+    }
+  }
+
+  def pointOffset(yVal: Int) = {
+    if (yVal % 2 == 0) {
+      dotSpacing/2
+    }
+    else {
+      0
+    }
+  }
+
+  def generateGemPoints() = {
+    (0 to numDotsRow).map { i =>
+      Array[Float](random(w/4, 3*(width-padding)/4), random(height/4, 3*(height-padding)/4))
+    }
+  }
+
+  def drawEdges(edges: Array[Array[Float]], sweight: Int) {
+    strokeWeight(sweight)
     edges.foreach { edge =>
       line(edge(0), edge(1), edge(2), edge(3))
-    }
-
-    points.foreach { point =>
-      noStroke()
-      ellipse(point(0), point(1), 3, 3)
     }
   }
 }
