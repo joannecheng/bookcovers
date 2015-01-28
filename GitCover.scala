@@ -1,13 +1,12 @@
 import processing.core._
+import processing.pdf._
 import java.util.Random
 
 object GitCover extends PApplet {
-  private var mySketch:GitCover = _
-
   def main() = {
-    mySketch = new GitCover
-
+    val mySketch = new GitCover
     val frame = new javax.swing.JFrame("GitCover")
+
     frame.getContentPane().add(mySketch)
     mySketch.init
 
@@ -18,11 +17,7 @@ object GitCover extends PApplet {
 
 class GitCover extends PApplet {
   override def setup() = {
-    size(1000, 1000)
-    background(3)
-    fill(200, 100, 200)
-    ellipse(50, 50 , 50, 50)
-    frameRate(1)
+    size(1000, 1000, PConstants.PDF, "file.pdf")
   }
 
   override def draw() ={
