@@ -1,28 +1,14 @@
+package com.bookcover.gitcover
+
 import processing.core._
+import processing.pdf._
 import java.util.Random
 
-object GitCover extends PApplet {
-  private var mySketch:GitCover = _
-
-  def main() = {
-    mySketch = new GitCover
-
-    val frame = new javax.swing.JFrame("GitCover")
-    frame.getContentPane().add(mySketch)
-    mySketch.init
-
-    frame.setSize(1000, 1000)
-    frame.setVisible(true)
-  }
-}
-
 class GitCover extends PApplet {
+  val pdf = new PGraphicsPDF
   override def setup() = {
-    size(1000, 1000)
+    size(1000, 1000, PConstants.PDF, "GitCover.pdf")
     background(3)
-    fill(200, 100, 200)
-    ellipse(50, 50 , 50, 50)
-    frameRate(1)
   }
 
   override def draw() ={
@@ -31,6 +17,7 @@ class GitCover extends PApplet {
     stroke(255)
 
     nodes.render
+    exit()
   }
 
   class GraphNodes(numNodes: Int) {
@@ -80,4 +67,4 @@ class GitCover extends PApplet {
   }
 }
 
-GitCover.main()
+//Bookcover.main(new GitCover)
