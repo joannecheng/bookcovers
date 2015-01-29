@@ -26,6 +26,7 @@ class GitCover extends PApplet {
     stroke(255)
 
     nodes.render
+    exit()
   }
 
   class GraphNodes(numNodes: Int) {
