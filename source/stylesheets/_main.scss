@@ -1,0 +1,10 @@
+header {
+  h1 {
+    float: left;
+  }
+}
+
+section {
+  @include outer-container;
+  text-align: center;
+}
