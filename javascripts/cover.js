@@ -23,6 +23,9 @@
     return new fabric.Circle({
       left: Math.random() * width,
       top: Math.random() * height,
+      originX: "center",
+      originY: "center",
+      centeredScaling: true,
       radius: 2
     });
   });
@@ -51,5 +54,14 @@
   canvas.add(new fabric.Group(lines));
 
   canvas.add(new fabric.Group(points));
+
+  $(".canvas-to-svg").click((function(_this) {
+    return function(event) {
+      var file;
+      event.preventDefault();
+      file = new CanvasSaver(canvas);
+      return file.save();
+    };
+  })(this));
 
 }).call(this);
