@@ -8,6 +8,10 @@
 header {
   text-align: center; }
 
+/* line 5, /Users/joannecheng/dev/tbot/bookcovers/source/stylesheets/_main.scss */
+.canvas-to-svg {
+  cursor: pointer; }
+
 /* line 7, /Users/joannecheng/dev/tbot/bookcovers/source/stylesheets/all.css.scss */
 body {
   background: #f4f4f4; }
