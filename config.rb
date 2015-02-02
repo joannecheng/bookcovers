@@ -73,5 +73,5 @@ end
 
 activate :deploy do |deploy|
   deploy.method = :git
-  deploy.remote = "fucking-javascript"
+  deploy.after_build = true
 end
