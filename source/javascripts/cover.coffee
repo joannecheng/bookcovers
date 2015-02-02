@@ -12,6 +12,9 @@ points = _.map [0.. numPoints], ->
   new fabric.Circle(
     left: Math.random() * width
     top: Math.random() * height
+    originX: "center"
+    originY: "center"
+    centeredScaling: true
     radius: 2
   )
 
@@ -31,4 +34,7 @@ _.each points, (startingPoint) ->
 canvas.add(new fabric.Group(lines))
 canvas.add(new fabric.Group(points))
 
-
+$(".canvas-to-svg").click (event) =>
+  event.preventDefault()
+  file = new CanvasSaver(canvas) 
+  file.save()

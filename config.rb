@@ -71,6 +71,7 @@ configure :build do
   # set :http_prefix, "/Content/images/"
 end
 
+activate :relative_assets
 activate :deploy do |deploy|
   deploy.method = :git
   deploy.after_build = true
