@@ -9,9 +9,9 @@
 
   numPoints = Math.floor(Math.random() * 50 + 150);
 
-  width = 653;
+  height = $("canvas").height();
 
-  height = 900;
+  width = $("canvas").width();
 
   canvas = new fabric.StaticCanvas("book_cover", {
     backgroundColor: "rgba(40, 40, 40, 1)"
@@ -23,8 +23,8 @@
     return _results;
   }).apply(this), function() {
     return new fabric.Circle({
-      left: Math.random() * (width - 20) + 40,
-      top: Math.random() * (height - 20) + 40,
+      left: Math.random() * (width - 20) + 10,
+      top: Math.random() * (height - 20) + 10,
       originX: "center",
       originY: "center",
       centeredScaling: true,
