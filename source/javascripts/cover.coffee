@@ -4,16 +4,16 @@ dist = (point1, point2) ->
   Math.sqrt(square)
 
 numPoints = Math.floor(Math.random() * 50 + 150)
-width = 900
-height = 900
+height = $("canvas").height()
+width = $("canvas").width()
 
 canvas = new fabric.StaticCanvas("book_cover",
   backgroundColor: "rgba(40, 40, 40, 1)"
 )
 points = _.map [0.. numPoints], ->
   new fabric.Circle(
-    left: Math.random() * (width - 20) + 40
-    top: Math.random() * (height - 20) + 40
+    left: Math.random() * (width - 20) + 10
+    top: Math.random() * (height - 20) + 10
     originX: "center"
     originY: "center"
     centeredScaling: true
