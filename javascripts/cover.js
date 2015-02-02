@@ -9,7 +9,7 @@
 
   numPoints = Math.floor(Math.random() * 50 + 150);
 
-  width = 900;
+  width = 653;
 
   height = 900;
 
