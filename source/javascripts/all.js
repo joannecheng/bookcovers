@@ -4,3 +4,4 @@
 //= require underscore/underscore
 //= require jspdf.debug
 //= require canvas_saver
+//= require bookcover
