@@ -7,7 +7,7 @@
       this.draw = __bind(this.draw, this);
       this.width = __bind(this.width, this);
       this.height = __bind(this.height, this);
-      console.log(this.height());
+      this.canvas = new fabric.StaticCanvas(this.canvasID);
     }
 
     Bookcover.prototype.height = function() {
