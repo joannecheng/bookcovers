@@ -1,6 +1,6 @@
 class window.Bookcover
   constructor: (@canvasID) ->
-    console.log @height()
+    @canvas = new fabric.StaticCanvas(@canvasID)
 
   height: =>
     $("##{@canvasID}").height()
