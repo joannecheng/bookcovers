@@ -36,8 +36,8 @@ class HaskellCover
     path.strokeJoin = "round"
     path.smooth()
 
-h = new HaskellCover("book_cover")
-h.draw()
+haskellCover = new HaskellCover("book_cover")
+haskellCover.draw()
 
 $(".canvas-to-svg").click (event) =>
   event.preventDefault()
