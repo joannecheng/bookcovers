@@ -1,4 +1,4 @@
-class HaskellCover
+class Yarn
   constructor: (@canvasID) ->
     $("##{@canvasID}").css("background-color", "rgba(255, 255, 255, 1)")
 
@@ -36,7 +36,7 @@ class HaskellCover
     path.strokeJoin = "round"
     path.smooth()
 
-haskellCover = new HaskellCover("book_cover")
+haskellCover = new Yarn("book_cover")
 haskellCover.draw()
 
 $(".canvas-to-svg").click (event) =>

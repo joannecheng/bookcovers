@@ -7,4 +7,3 @@
 //= require perlin
 
 //= require canvas_saver
-//= require bookcover
