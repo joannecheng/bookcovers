@@ -7,15 +7,17 @@
       this.canvasID = _at_canvasID;
       this._randomColor = __bind(this._randomColor, this);
       this._triangle = __bind(this._triangle, this);
+      this._drawBackground = __bind(this._drawBackground, this);
       this.toSVG = __bind(this.toSVG, this);
       this.width = __bind(this.width, this);
       this.height = __bind(this.height, this);
       this.draw = __bind(this.draw, this);
-      $("#" + this.canvasID).css("background-color", "rgba(244, 244, 244, 1)");
+      $("#" + this.canvasID).attr("background-color", "rgba(244, 244, 244, 1)");
     }
 
     Triangles.prototype.draw = function() {
       var columnCount, rowCount, triangle, x, y, _i, _results;
+      this._drawBackground();
       columnCount = Math.floor(this.width() / 50) - 1;
       rowCount = Math.floor(this.height() / 80) - 1;
       _results = [];
@@ -48,6 +50,14 @@
     Triangles.prototype.toSVG = function() {
       return paper.project.exportSVG({
         asString: true
+      });
+    };
+
+    Triangles.prototype._drawBackground = function() {
+      return new Path.Rectangle({
+        from: [0, 0],
+        to: [this.width(), this.height()],
+        fillColor: "rgba(240, 240, 240, 1)"
       });
     };
 
