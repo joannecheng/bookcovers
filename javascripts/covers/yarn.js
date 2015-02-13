@@ -1,9 +1,9 @@
 (function() {
-  var HaskellCover, haskellCover,
+  var Yarn, haskellCover,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
-  HaskellCover = (function() {
-    function HaskellCover(_at_canvasID) {
+  Yarn = (function() {
+    function Yarn(_at_canvasID) {
       this.canvasID = _at_canvasID;
       this._drawCircle = __bind(this._drawCircle, this);
       this.width = __bind(this.width, this);
@@ -13,7 +13,7 @@
       $("#" + this.canvasID).css("background-color", "rgba(255, 255, 255, 1)");
     }
 
-    HaskellCover.prototype.draw = function() {
+    Yarn.prototype.draw = function() {
       var centerX, centerY, n, numCircles, path, _i, _results;
       centerX = this.width() / 2;
       centerY = this.height() / 2;
@@ -29,21 +29,21 @@
       return _results;
     };
 
-    HaskellCover.prototype.toSVG = function() {
+    Yarn.prototype.toSVG = function() {
       return paper.project.exportSVG({
         asString: true
       });
     };
 
-    HaskellCover.prototype.height = function() {
+    Yarn.prototype.height = function() {
       return $("#" + this.canvasID).height();
     };
 
-    HaskellCover.prototype.width = function() {
+    Yarn.prototype.width = function() {
       return $("#" + this.canvasID).width();
     };
 
-    HaskellCover.prototype._drawCircle = function(path, centerX, centerY) {
+    Yarn.prototype._drawCircle = function(path, centerX, centerY) {
       var angle, arr, formResolution, n, r, value, _i;
       r = 130;
       formResolution = 15;
@@ -58,11 +58,11 @@
       return path.smooth();
     };
 
-    return HaskellCover;
+    return Yarn;
 
   })();
 
-  haskellCover = new HaskellCover("book_cover");
+  haskellCover = new Yarn("book_cover");
 
   haskellCover.draw();
 
