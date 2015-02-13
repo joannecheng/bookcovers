@@ -1,5 +1,5 @@
 (function() {
-  var HaskellCover, h,
+  var HaskellCover, haskellCover,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   HaskellCover = (function() {
@@ -62,9 +62,9 @@
 
   })();
 
-  h = new HaskellCover("book_cover");
+  haskellCover = new HaskellCover("book_cover");
 
-  h.draw();
+  haskellCover.draw();
 
   $(".canvas-to-svg").click((function(_this) {
     return function(event) {
