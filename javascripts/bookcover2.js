@@ -5,11 +5,13 @@
   RailsIosCover = (function() {
     function RailsIosCover(_at_canvasID) {
       this.canvasID = _at_canvasID;
+      this._randomColor = __bind(this._randomColor, this);
       this._triangle = __bind(this._triangle, this);
+      this.toSVG = __bind(this.toSVG, this);
       this.width = __bind(this.width, this);
       this.height = __bind(this.height, this);
       this.draw = __bind(this.draw, this);
-      $("#" + this.canvasID).css("background-color", "rgba(255, 255, 255, 1)");
+      $("#" + this.canvasID).css("background-color", "rgba(244, 244, 244, 1)");
     }
 
     RailsIosCover.prototype.draw = function() {
@@ -22,7 +24,7 @@
           var _j, _results1;
           _results1 = [];
           for (x = _j = 1; 1 <= columnCount ? _j <= columnCount : _j >= columnCount; x = 1 <= columnCount ? ++_j : --_j) {
-            triangle = this._triangle([50 * x, 80 * y + 50]);
+            triangle = this._triangle([50 * x, 80 * y + 60]);
             if ((x + y) % 2 === 0) {
               _results1.push(triangle.rotate(180));
             } else {
@@ -43,9 +45,15 @@
       return $("#" + this.canvasID).width();
     };
 
+    RailsIosCover.prototype.toSVG = function() {
+      return paper.project.exportSVG({
+        asString: true
+      });
+    };
+
     RailsIosCover.prototype._triangle = function(pos) {
       var color;
-      color = new Color(Math.random(), Math.random() / 4, Math.random() / 2);
+      color = this._randomColor();
       if (Math.random() > 0.4) {
         color = "white";
       }
@@ -56,6 +64,14 @@
         radius: 50,
         fillColor: color
       });
+    };
+
+    RailsIosCover.prototype._randomColor = function() {
+      var blue, green, red;
+      red = Math.random();
+      blue = Math.random() / 2;
+      green = Math.random() / 4;
+      return new Color(red, green, blue, 0.7);
     };
 
     return RailsIosCover;
@@ -70,7 +86,7 @@
     return function(event) {
       var file;
       event.preventDefault();
-      file = new CanvasSaver(h);
+      file = new CanvasSaver(cover);
       return file.save();
     };
   })(this));
