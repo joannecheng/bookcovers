@@ -36,8 +36,8 @@ class Yarn
     path.strokeJoin = "round"
     path.smooth()
 
-haskellCover = new Yarn("book_cover")
-haskellCover.draw()
+yarn = new Yarn("book_cover")
+yarn.draw()
 
 $(".canvas-to-svg").click (event) =>
   event.preventDefault()
