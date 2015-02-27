@@ -1,5 +1,5 @@
 (function() {
-  var Yarn, haskellCover,
+  var Yarn, yarn,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   Yarn = (function() {
@@ -62,9 +62,9 @@
 
   })();
 
-  haskellCover = new Yarn("book_cover");
+  yarn = new Yarn("book_cover");
 
-  haskellCover.draw();
+  yarn.draw();
 
   $(".canvas-to-svg").click((function(_this) {
     return function(event) {
