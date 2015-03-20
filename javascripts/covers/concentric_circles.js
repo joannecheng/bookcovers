@@ -8,6 +8,7 @@
       this._drawBackground = bind(this._drawBackground, this);
       this.width = bind(this.width, this);
       this.height = bind(this.height, this);
+      this.toSVG = bind(this.toSVG, this);
       this.draw = bind(this.draw, this);
     }
 
@@ -28,6 +29,12 @@
         }));
       }
       return results;
+    };
+
+    ConcentricCircles.prototype.toSVG = function() {
+      return paper.project.exportSVG({
+        asString: true
+      });
     };
 
     ConcentricCircles.prototype.height = function() {
