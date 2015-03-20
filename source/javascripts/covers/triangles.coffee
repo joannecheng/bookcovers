@@ -1,15 +1,16 @@
 class Triangles
   constructor: (@canvasID) ->
-    $("##{@canvasID}").attr("background-color", "rgba(244, 244, 244, 1)")
 
   draw: =>
     @_drawBackground()
-    columnCount = Math.floor(@width()/50) - 1
-    rowCount = Math.floor(@height()/80) - 1
+    triangleHeight = 80
+    triangleWidth = 50
+    columnCount = Math.floor(@width()/triangleWidth) - 1
+    rowCount = Math.floor(@height()/triangleHeight) - 1
 
     for y in [0..rowCount]
       for x in [1..columnCount]
-        triangle = @_triangle([50*x, 80*y+60])
+        triangle = @_triangle([triangleWidth*x, triangleHeight*y+60])
         if (x + y) % 2 == 0
           triangle.rotate(180)
 
@@ -44,7 +45,6 @@ class Triangles
 
   _randomColor: =>
     red = Math.random()
-
     blue = Math.random()/2
     green = Math.random()/4
     new Color(red, green, blue, 0.7)
