@@ -22,6 +22,9 @@ class ConcentricCircles
         strokeWidth: Math.random() * 5
       )
 
+  toSVG: =>
+    paper.project.exportSVG(asString: true)
+
   height: =>
     $("##{@canvasID}").height()
 
