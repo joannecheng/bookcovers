@@ -1,32 +1,32 @@
 (function() {
   var Yarn, yarn,
-    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+    bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   Yarn = (function() {
-    function Yarn(_at_canvasID) {
-      this.canvasID = _at_canvasID;
-      this._drawCircle = __bind(this._drawCircle, this);
-      this.width = __bind(this.width, this);
-      this.height = __bind(this.height, this);
-      this.toSVG = __bind(this.toSVG, this);
-      this.draw = __bind(this.draw, this);
+    function Yarn(canvasID) {
+      this.canvasID = canvasID;
+      this._drawCircle = bind(this._drawCircle, this);
+      this.width = bind(this.width, this);
+      this.height = bind(this.height, this);
+      this.toSVG = bind(this.toSVG, this);
+      this.draw = bind(this.draw, this);
       $("#" + this.canvasID).css("background-color", "rgba(255, 255, 255, 1)");
     }
 
     Yarn.prototype.draw = function() {
-      var centerX, centerY, n, numCircles, path, _i, _results;
+      var centerX, centerY, i, n, numCircles, path, ref, results;
       centerX = this.width() / 2;
       centerY = this.height() / 2;
       numCircles = 40 + Math.random() * 40;
-      _results = [];
-      for (n = _i = 0; 0 <= numCircles ? _i <= numCircles : _i >= numCircles; n = 0 <= numCircles ? ++_i : --_i) {
+      results = [];
+      for (n = i = 0, ref = numCircles; 0 <= ref ? i <= ref : i >= ref; n = 0 <= ref ? ++i : --i) {
         path = new Path();
         path.strokeColor = "black";
         this._drawCircle(path, centerX, centerY);
         centerX += noise.perlin3(n / numCircles, n / numCircles, Date.now()) * 20;
-        _results.push(centerY += noise.perlin3(n / numCircles * 0.1, n / numCircles * 0.01, Date.now()) * 20);
+        results.push(centerY += noise.perlin3(n / numCircles * 0.1, n / numCircles * 0.01, Date.now()) * 20);
       }
-      return _results;
+      return results;
     };
 
     Yarn.prototype.toSVG = function() {
@@ -44,12 +44,12 @@
     };
 
     Yarn.prototype._drawCircle = function(path, centerX, centerY) {
-      var angle, arr, formResolution, n, r, value, _i;
+      var angle, arr, formResolution, i, n, r, ref, value;
       r = 130;
       formResolution = 15;
       angle = 360 / formResolution * Math.PI / 180;
       arr = [];
-      for (n = _i = 1; 1 <= formResolution ? _i <= formResolution : _i >= formResolution; n = 1 <= formResolution ? ++_i : --_i) {
+      for (n = i = 1, ref = formResolution; 1 <= ref ? i <= ref : i >= ref; n = 1 <= ref ? ++i : --i) {
         value = Math.random() * 8;
         path.add(new Point(centerX + r * Math.cos(angle * n + value), centerY + r * Math.sin(angle * n + value)));
       }

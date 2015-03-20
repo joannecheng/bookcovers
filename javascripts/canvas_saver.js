@@ -1,10 +1,10 @@
 (function() {
-  var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+  var bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   window.CanvasSaver = (function() {
-    function CanvasSaver(_at_canvas) {
-      this.canvas = _at_canvas;
-      this.save = __bind(this.save, this);
+    function CanvasSaver(canvas) {
+      this.canvas = canvas;
+      this.save = bind(this.save, this);
     }
 
     CanvasSaver.prototype.save = function() {

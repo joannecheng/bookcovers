@@ -1,39 +1,39 @@
 (function() {
   var WavyLines, cover,
-    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+    bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   WavyLines = (function() {
-    function WavyLines(_at_canvasID) {
-      this.canvasID = _at_canvasID;
-      this._randomColor = __bind(this._randomColor, this);
-      this._segments = __bind(this._segments, this);
-      this._drawWavyLine = __bind(this._drawWavyLine, this);
-      this._drawBackground = __bind(this._drawBackground, this);
-      this.toSVG = __bind(this.toSVG, this);
-      this.width = __bind(this.width, this);
-      this.height = __bind(this.height, this);
-      this.draw = __bind(this.draw, this);
+    function WavyLines(canvasID) {
+      this.canvasID = canvasID;
+      this._randomColor = bind(this._randomColor, this);
+      this._segments = bind(this._segments, this);
+      this._drawWavyLine = bind(this._drawWavyLine, this);
+      this._drawBackground = bind(this._drawBackground, this);
+      this.toSVG = bind(this.toSVG, this);
+      this.width = bind(this.width, this);
+      this.height = bind(this.height, this);
+      this.draw = bind(this.draw, this);
       this.groupWidth = 65;
       this.numGroups = Math.floor(this.width() / this.groupWidth);
     }
 
     WavyLines.prototype.draw = function() {
-      var i, numberLines, startingX, _i, _ref, _results;
+      var i, j, numberLines, ref, results, startingX;
       this._drawBackground();
-      _results = [];
-      for (i = _i = 0, _ref = this.numGroups; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
+      results = [];
+      for (i = j = 0, ref = this.numGroups; 0 <= ref ? j <= ref : j >= ref; i = 0 <= ref ? ++j : --j) {
         startingX = 20 + i * this.groupWidth;
         numberLines = Math.floor(Math.random() * 4 + 20);
-        _results.push((function() {
-          var _j, _results1;
-          _results1 = [];
-          for (_j = 0; 0 <= numberLines ? _j <= numberLines : _j >= numberLines; 0 <= numberLines ? _j++ : _j--) {
-            _results1.push(this._drawWavyLine(startingX));
+        results.push((function() {
+          var k, ref1, results1;
+          results1 = [];
+          for (k = 0, ref1 = numberLines; 0 <= ref1 ? k <= ref1 : k >= ref1; 0 <= ref1 ? k++ : k--) {
+            results1.push(this._drawWavyLine(startingX));
           }
-          return _results1;
+          return results1;
         }).call(this));
       }
-      return _results;
+      return results;
     };
 
     WavyLines.prototype.height = function() {
@@ -67,13 +67,13 @@
     };
 
     WavyLines.prototype._segments = function(columnPosition) {
-      var changed, increment, _i, _ref, _results;
+      var changed, increment, j, ref, results;
       increment = 20;
       changed = false;
       return _.map((function() {
-        _results = [];
-        for (var _i = 0, _ref = this.height() / increment; 0 <= _ref ? _i <= _ref : _i >= _ref; 0 <= _ref ? _i++ : _i--){ _results.push(_i); }
-        return _results;
+        results = [];
+        for (var j = 0, ref = this.height() / increment; 0 <= ref ? j <= ref : j >= ref; 0 <= ref ? j++ : j--){ results.push(j); }
+        return results;
       }).apply(this), (function(_this) {
         return function(i) {
           var otherColumnProbability;

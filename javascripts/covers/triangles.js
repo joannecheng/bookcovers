@@ -1,42 +1,43 @@
 (function() {
   var Triangles, cover,
-    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+    bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   Triangles = (function() {
-    function Triangles(_at_canvasID) {
-      this.canvasID = _at_canvasID;
-      this._randomColor = __bind(this._randomColor, this);
-      this._triangle = __bind(this._triangle, this);
-      this._drawBackground = __bind(this._drawBackground, this);
-      this.toSVG = __bind(this.toSVG, this);
-      this.width = __bind(this.width, this);
-      this.height = __bind(this.height, this);
-      this.draw = __bind(this.draw, this);
-      $("#" + this.canvasID).attr("background-color", "rgba(244, 244, 244, 1)");
+    function Triangles(canvasID) {
+      this.canvasID = canvasID;
+      this._randomColor = bind(this._randomColor, this);
+      this._triangle = bind(this._triangle, this);
+      this._drawBackground = bind(this._drawBackground, this);
+      this.toSVG = bind(this.toSVG, this);
+      this.width = bind(this.width, this);
+      this.height = bind(this.height, this);
+      this.draw = bind(this.draw, this);
     }
 
     Triangles.prototype.draw = function() {
-      var columnCount, rowCount, triangle, x, y, _i, _results;
+      var columnCount, i, ref, results, rowCount, triangle, triangleHeight, triangleWidth, x, y;
       this._drawBackground();
-      columnCount = Math.floor(this.width() / 50) - 1;
-      rowCount = Math.floor(this.height() / 80) - 1;
-      _results = [];
-      for (y = _i = 0; 0 <= rowCount ? _i <= rowCount : _i >= rowCount; y = 0 <= rowCount ? ++_i : --_i) {
-        _results.push((function() {
-          var _j, _results1;
-          _results1 = [];
-          for (x = _j = 1; 1 <= columnCount ? _j <= columnCount : _j >= columnCount; x = 1 <= columnCount ? ++_j : --_j) {
-            triangle = this._triangle([50 * x, 80 * y + 60]);
+      triangleHeight = 80;
+      triangleWidth = 50;
+      columnCount = Math.floor(this.width() / triangleWidth) - 1;
+      rowCount = Math.floor(this.height() / triangleHeight) - 1;
+      results = [];
+      for (y = i = 0, ref = rowCount; 0 <= ref ? i <= ref : i >= ref; y = 0 <= ref ? ++i : --i) {
+        results.push((function() {
+          var j, ref1, results1;
+          results1 = [];
+          for (x = j = 1, ref1 = columnCount; 1 <= ref1 ? j <= ref1 : j >= ref1; x = 1 <= ref1 ? ++j : --j) {
+            triangle = this._triangle([triangleWidth * x, triangleHeight * y + 60]);
             if ((x + y) % 2 === 0) {
-              _results1.push(triangle.rotate(180));
+              results1.push(triangle.rotate(180));
             } else {
-              _results1.push(void 0);
+              results1.push(void 0);
             }
           }
-          return _results1;
+          return results1;
         }).call(this));
       }
-      return _results;
+      return results;
     };
 
     Triangles.prototype.height = function() {

@@ -1,5 +1,5 @@
 (function() {
-  var canvas, dist, height, lines, numPoints, points, width, _i, _results;
+  var canvas, dist, height, i, lines, numPoints, points, results, width;
 
   dist = function(point1, point2) {
     var square;
@@ -18,9 +18,9 @@
   });
 
   points = _.map((function() {
-    _results = [];
-    for (var _i = 0; 0 <= numPoints ? _i <= numPoints : _i >= numPoints; 0 <= numPoints ? _i++ : _i--){ _results.push(_i); }
-    return _results;
+    results = [];
+    for (var i = 0; 0 <= numPoints ? i <= numPoints : i >= numPoints; 0 <= numPoints ? i++ : i--){ results.push(i); }
+    return results;
   }).apply(this), function() {
     return new fabric.Circle({
       left: Math.random() * (width - 20) + 10,
