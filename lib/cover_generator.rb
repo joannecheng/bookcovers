@@ -22,7 +22,7 @@ class CoverGenerator
   def haml_template(slug, cover_name)
     <<-eos
 %header
-  %h1= #{cover_name}
+  %h1 #{cover_name.capitalize}
 
   %canvas#book_cover{height: 980, width: 653}
   .canvas-to-svg Save as SVG
