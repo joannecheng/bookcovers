@@ -1,0 +1,17 @@
+{
+  "name": "bookcovers",
+  "version": "0.0.0",
+  "homepage": "https://github.com/joannecheng/bookcovers",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "three.js": "~0.70.0"
+  }
+}
